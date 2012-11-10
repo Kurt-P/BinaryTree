@@ -116,28 +116,41 @@ public class BinaryTree {
     }
     
     public void delete(Node node, int value) {
-        if (value == node.value && node.isLeaf()) {
-            node.parent = null;
-            System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
-            list.set(node.rank, null);
-//            System.out.printf("Deleted node with value: %d, and rank %d", node.value, node.rank);
-        }
+//        if (value == node.value && node.isLeaf()) {
+//            node.parent = null;
+//            //node.parent.
+//            System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
+//            list.set(node.rank, null);
+////            System.out.printf("Deleted node with value: %d, and rank %d", node.value, node.rank);
+//        }
         if (value == node.value && node.hasChild()) {
             if (node.hasLeft()) {
-                //TODO: ASK FOR HELP WITH THIS PART.
+                node.parent.left = node.getSmallestChild();
+                System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
+                list.set(node.rank, null);
+                node = null;
             }
             else {
                 node.parent.right = node.right;
                 System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
                 list.set(node.rank, null);
+                node = null;
             }
         }
         else if (value < node.value) {
+            if (node.left.value == value && node.left.isLeaf()) {
+                System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.left.value, node.left.rank);
+                node.left = null;
+            }
             if (node.left != null) {
                 delete(node.left, value);
             }
         }
         else if (value > node.value) {
+            if (node.right.value == value && node.right.isLeaf()) {
+                System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.right.value, node.right.rank);
+                node.right = null;
+            }
             if (node.right != null) {
                 delete(node.right, value);
             }

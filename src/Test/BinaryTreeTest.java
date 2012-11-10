@@ -16,8 +16,6 @@ public class BinaryTreeTest {
         tree.insert(root, 9);
         tree.insert(root, 5);
         tree.insert(root, 3);
-        
-        tree.insert(root, 12);
         System.out.println();
         
         System.out.println("Finding the partent of 4");
@@ -35,6 +33,9 @@ public class BinaryTreeTest {
         System.out.println("Printing tree using postorder method");
         tree.postorder(root);
         
-        tree.delete(root, 12);
+        tree.delete(root, 6);
+        
+        System.out.println();
+        tree.postorder(root);
     }
 }

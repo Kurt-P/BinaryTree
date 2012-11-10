@@ -73,6 +73,27 @@ public class Node {
     public boolean hasRight() {
         return (right != null);
     }
+    
+    public Node getSmallestChild() {
+//        if (hasChild()) {
+//            if (left.value < right.value) {
+//                return left.getSmallestChild();
+//            }
+//            else {
+//                return right.getSmallestChild();
+//            }
+//        }
+//        return this;
+        if (hasLeft()) {
+            if (hasRight()) {
+                if (right.value < left.value) {
+                    return right.getSmallestChild();
+                }
+            }
+            return right.getSmallestChild();
+        }
+        return this;
+    }
 
     /**
      * @return
