@@ -5,66 +5,80 @@ package edu.KurtP.BinaryTree;
  * @version 0.3.11102012
  */
 public class Node {
-    private Node left, right, parent;
-    private int value;
-    
+
+    protected Node left, right, parent;
+    protected int value, rank;
+
     public Node(int value) {
         this.value = value;
     }
 
     /**
-     * @return the left
+     * Get the rank of the
+     * <code>parent node</code>
+     *
+     * @return rank
      */
-    public Node getLeft() {
-        return left;
+    public int getParentRank() {
+        return getParent().rank;
     }
 
     /**
-     * @param left the left to set
-     */
-    public void setLeft(Node left) {
-        this.left = left;
-    }
-
-    /**
-     * @return the right
-     */
-    public Node getRight() {
-        return right;
-    }
-
-    /**
-     * @param right the right to set
-     */
-    public void setRight(Node right) {
-        this.right = right;
-    }
-
-    /**
-     * @return the parent
+     * Get the
+     * <code>parent node</code> of a
+     * <code>node</code>
+     *
+     * @return parent
      */
     public Node getParent() {
         return parent;
     }
 
     /**
-     * @param parent the parent to set
+     * Check if a
+     * <code>node</code> is a
+     * <code>leaf</code>
+     *
+     * @return boolean
      */
-    public void setParent(Node parent) {
-        this.parent = parent;
+    public boolean isLeaf() {
+        return (right == null && left == null);
     }
 
     /**
-     * @return the value
+     * Check if the node is the
+     * <code>root node</code>
+     *
+     * @return boolean
      */
-    public int getValue() {
-        return value;
+    public boolean isRoot() {
+        return (parent == null);
     }
 
     /**
-     * @param value the value to set
+     * Checks if the current
+     * <code>node</code> has
+     * <code>children</code>
+     *
+     * @return boolean
      */
-    public void setValue(int value) {
-        this.value = value;
+    public boolean hasChild() {
+        return (left != null | right != null);
+    }
+    
+    public boolean hasLeft() {
+        return (left != null);
+    }
+    
+    public boolean hasRight() {
+        return (right != null);
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(value);
     }
 }
