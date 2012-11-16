@@ -2,7 +2,7 @@ package edu.KurtP.BinaryTree;
 
 /**
  * @author Kurt P
- * @version 0.3.11102012
+ * @version 1.0.11152012
  */
 public class Node {
 
@@ -65,15 +65,36 @@ public class Node {
     public boolean hasChild() {
         return (left != null | right != null);
     }
-    
+
+    /**
+     * Checks if the
+     * <code>node</code> has a left child
+     *
+     * @return boolean
+     */
     public boolean hasLeft() {
         return (left != null);
     }
-    
+
+    /**
+     * Checks if the
+     * <code>node</code> has a right child
+     *
+     * @return boolean
+     */
     public boolean hasRight() {
         return (right != null);
     }
-    
+
+    /**
+     * Gets the smallest child in a sub-tree.
+     *
+     * This method is to be used the delete method, when a node to be deleted
+     * has children node. I'm not sure if it's returning the correct node. If it
+     * isn't returning the correct node, then the delete method will not work.
+     *
+     * @return Node
+     */
     public Node getSmallestChild() {
 //        if (hasChild()) {
 //            if (left.value < right.value) {

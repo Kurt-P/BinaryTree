@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 /**
  * @author Kurt P
- * @version 0.0.11102012
+ * @version 0.5.11152012
  */
 public class BinaryTree {
 
@@ -25,9 +25,6 @@ public class BinaryTree {
         list.add(root.rank, root);
     }
 
-//    public BinaryTree() {
-//        this(10);
-//    }
     /**
      * Search the tree for a
      * <code>node</code> with a specific
@@ -89,7 +86,6 @@ public class BinaryTree {
         list.add(null);
         if (value < node.value) {
             if (node.left != null) {
-//                list.add(null);
                 insert(node.left, value);
             }
             else {
@@ -102,7 +98,6 @@ public class BinaryTree {
         }
         else if (value > node.value) {
             if (node.right != null) {
-//                list.add(null);
                 insert(node.right, value);
             }
             else {
@@ -115,6 +110,12 @@ public class BinaryTree {
         }
     }
     
+    /**
+     * Delete a node in the tree
+     * 
+     * @param node the node to start at
+     * @param value the value to be tested
+     */
     public void delete(Node node, int value) {
 //        if (value == node.value && node.isLeaf()) {
 //            node.parent = null;
@@ -123,13 +124,22 @@ public class BinaryTree {
 //            list.set(node.rank, null);
 ////            System.out.printf("Deleted node with value: %d, and rank %d", node.value, node.rank);
 //        }
+        /*
+         * This block in the 'if' statements checks if the node has children. 
+         * if the node does have children, it will be deleted in a different 
+         * fassino than one that is a leaf. I never did get this method 
+         * finished. It's a tricky one.
+         */
+        //Check if the node has a child
         if (value == node.value && node.hasChild()) {
+            //check the left child
             if (node.hasLeft()) {
                 node.parent.left = node.getSmallestChild();
                 System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
                 list.set(node.rank, null);
                 node = null;
             }
+            //this elese statement delets a leaf.
             else {
                 node.parent.right = node.right;
                 System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.value, node.rank);
@@ -137,6 +147,10 @@ public class BinaryTree {
                 node = null;
             }
         }
+        /*
+         * These next two 'if' blocks simply check the value of the nodes and 
+         * recersivly calling the delete method.
+         */
         else if (value < node.value) {
             if (node.left.value == value && node.left.isLeaf()) {
                 System.out.printf("**Deleted node with value: %d, and rank %d**\n", node.left.value, node.left.rank);

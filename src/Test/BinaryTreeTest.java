@@ -9,7 +9,6 @@ public class BinaryTreeTest {
         BinaryTree tree = new BinaryTree(root);
         
         System.out.println("Iserting the values");
-//        tree.insert(root, 8);
         tree.insert(root, 6);
         tree.insert(root, 7);
         tree.insert(root, 4);
@@ -36,6 +35,6 @@ public class BinaryTreeTest {
         tree.delete(root, 6);
         
         System.out.println();
-        tree.postorder(root);
+        tree.preorder(root);
     }
 }
